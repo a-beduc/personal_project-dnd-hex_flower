@@ -1,4 +1,5 @@
 import json
+import random
 
 
 class Hex:
@@ -71,7 +72,7 @@ class HexGrid:
         if (direction_name in ("N", "S") and
                 (x < self.min_coord or x > self.max_coord or
                  z < self.min_coord or z > self.max_coord)):
-            new_coordinates = [-coordinates[0], coordinates[1], -coordinates[2]]
+            new_coordinates = [coordinates[2], coordinates[1], coordinates[0]]
 
         if (direction_name in ("NW", "SW", "NE", "SE") and
                 (x < self.min_coord or x > self.max_coord or
@@ -86,6 +87,28 @@ class HexGrid:
     def move_current_position(self, direction_name):
         self.current_position = self.move(self.current_position, direction_name)
         return self.current_position
+
+
+def random_move():
+    dice_six_1 = random.randint(1, 6)
+    dice_six_2 = random.randint(1, 6)
+    double_dice_six = dice_six_1 + dice_six_2
+
+    move_mapping = {
+        2: "NE",
+        3: "NE",
+        4: "SE",
+        5: "SE",
+        6: "S",
+        7: "S",
+        8: "SW",
+        9: "SW",
+        10: "NW",
+        11: "NW",
+        12: "N"
+    }
+
+    return move_mapping[double_dice_six]
 
 
 def main():
@@ -142,6 +165,62 @@ def main():
     print(f"Current position : {new_hex_grid.current_position}")
     new_position = new_hex_grid.move_current_position("N")
     print(f"Current position : {new_position}\n")
+
+    print("*****-- RANDOM MOVEMENTS --******")
+    print(random_move())
+    new_hex_grid = HexGrid(init_file="weather_flower.json")
+    print(f"Current position : {new_hex_grid.current_position}\n")
+    randomx = random_move()
+    new_position = new_hex_grid.move_current_position(randomx)
+    print(f"going {randomx} so Current position : {new_position}\n")
+    randomx = random_move()
+    new_position = new_hex_grid.move_current_position(randomx)
+    print(f"going {randomx} so Current position : {new_position}\n")
+    randomx = random_move()
+    new_position = new_hex_grid.move_current_position(randomx)
+    print(f"going {randomx} so Current position : {new_position}\n")
+    randomx = random_move()
+    new_position = new_hex_grid.move_current_position(randomx)
+    print(f"going {randomx} so Current position : {new_position}\n")
+    randomx = random_move()
+    new_position = new_hex_grid.move_current_position(randomx)
+    print(f"going {randomx} so Current position : {new_position}\n")
+    randomx = random_move()
+    new_position = new_hex_grid.move_current_position(randomx)
+    print(f"going {randomx} so Current position : {new_position}\n")
+    randomx = random_move()
+    new_position = new_hex_grid.move_current_position(randomx)
+    print(f"going {randomx} so Current position : {new_position}\n")
+    randomx = random_move()
+    new_position = new_hex_grid.move_current_position(randomx)
+    print(f"going {randomx} so Current position : {new_position}\n")
+    randomx = random_move()
+    new_position = new_hex_grid.move_current_position(randomx)
+    print(f"going {randomx} so Current position : {new_position}\n")
+    randomx = random_move()
+    new_position = new_hex_grid.move_current_position(randomx)
+    print(f"going {randomx} so Current position : {new_position}\n")
+    randomx = random_move()
+    new_position = new_hex_grid.move_current_position(randomx)
+    print(f"going {randomx} so Current position : {new_position}\n")
+    randomx = random_move()
+    new_position = new_hex_grid.move_current_position(randomx)
+    print(f"going {randomx} so Current position : {new_position}\n")
+    randomx = random_move()
+    new_position = new_hex_grid.move_current_position(randomx)
+    print(f"going {randomx} so Current position : {new_position}\n")
+    randomx = random_move()
+    new_position = new_hex_grid.move_current_position(randomx)
+    print(f"going {randomx} so Current position : {new_position}\n")
+    randomx = random_move()
+    new_position = new_hex_grid.move_current_position(randomx)
+    print(f"going {randomx} so Current position : {new_position}\n")
+    randomx = random_move()
+    new_position = new_hex_grid.move_current_position(randomx)
+    print(f"going {randomx} so Current position : {new_position}\n")
+    randomx = random_move()
+    new_position = new_hex_grid.move_current_position(randomx)
+    print(f"going {randomx} so Current position : {new_position}\n")
 
 
 if __name__ == "__main__":
