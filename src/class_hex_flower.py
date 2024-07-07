@@ -88,25 +88,20 @@ class HexGrid:
 
 
 def random_move():
-    dice_six_1 = random.randint(1, 6)
-    dice_six_2 = random.randint(1, 6)
-    double_dice_six = dice_six_1 + dice_six_2
+    probability = random.uniform(0, 100)
 
-    move_mapping = {
-        2: "NE",
-        3: "NE",
-        4: "SE",
-        5: "SE",
-        6: "S",
-        7: "S",
-        8: "SW",
-        9: "SW",
-        10: "NW",
-        11: "NW",
-        12: "N"
-    }
-
-    return move_mapping[double_dice_six]
+    if probability <= 6:
+        return "N"
+    elif probability <= 17:
+        return "NW"
+    elif probability <= 28:
+        return "NE"
+    elif probability <= 49:
+        return "SW"
+    elif probability <= 70:
+        return "SE"
+    else:
+        return "S"
 
 
 def main():
@@ -119,9 +114,10 @@ def main():
         question = input("Keep moving ? (Y/N) ")
         randomx = random_move()
         new_position = new_hex_grid.move_current_position(randomx)
+        print(f"Direction : {randomx}")
         print(f"Current position : {new_position}")
         print(f"Description : {new_hex_grid.get_hex(new_hex_grid.current_position).description}\n"
-              f"Efects : {new_hex_grid.get_hex(new_hex_grid.current_position).effect}")
+              f"Effects : {new_hex_grid.get_hex(new_hex_grid.current_position).effect}")
 
 
 if __name__ == "__main__":
