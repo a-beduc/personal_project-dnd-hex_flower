@@ -1,0 +1,97 @@
+{
+  "(2, 0, -2)": {
+    "title": "Hex 1",
+    "description": "This is the description for hex (2, 0, -2).",
+    "effect": "Some special effect for this hex."
+  },
+  "(1, -1, -2)": {
+    "title": "Hex 2",
+    "description": "This is the description for hex (1, -1, -2).",
+    "effect": "Another special effect for this hex."
+  },
+  "(2, 1, -1)": {
+    "title": "Hex 3",
+    "description": "This is the description for hex (2, 1, -1).",
+    "effect": "Another special effect for this hex."
+  },
+  "(0, -2, -2)": {
+    "title": "Hex 4",
+    "description": "This is the description for hex (0, -2, -2).",
+    "effect": "Another special effect for this hex."
+  },
+  "(1, 0, -1)": {
+    "title": "Hex 5",
+    "description": "This is the description for hex (1, 0, -1).",
+    "effect": "Another special effect for this hex."
+  },
+  "(2, 2, 0)": {
+    "title": "Hex 6",
+    "description": "This is the description for hex (x, y, z).",
+    "effect": "Another special effect for this hex."
+  },
+  "(0, -1, -1)": {
+    "title": "Hex 7",
+    "description": "This is the description for hex (x, y, z).",
+    "effect": "Another special effect for this hex."
+  },
+  "(1, 1, 0)": {
+    "title": "Hex 8",
+    "description": "This is the description for hex (x, y, z).",
+    "effect": "Another special effect for this hex."
+  },
+  "(-1, -2, -1)": {
+    "title": "Hex 9",
+    "description": "This is the description for hex (x, y, z).",
+    "effect": "Another special effect for this hex."
+  },
+  "(0, 0, 0)": {
+    "title": "Hex 10",
+    "description": "This is the description for hex (x, y, z).",
+    "effect": "Another special effect for this hex."
+  },
+  "(1, 2, 1)": {
+    "title": "Hex 11",
+    "description": "This is the description for hex (x, y, z).",
+    "effect": "Another special effect for this hex."
+  },
+  "(-1, -1, 0)": {
+    "title": "Hex 12",
+    "description": "This is the description for hex (x, y, z).",
+    "effect": "Another special effect for this hex."
+  },
+  "(0, 1, 1)": {
+    "title": "Hex 13",
+    "description": "This is the description for hex (x, y, z).",
+    "effect": "Another special effect for this hex."
+  },
+  "(-2, -2, 0)": {
+    "title": "Hex 14",
+    "description": "This is the description for hex (x, y, z).",
+    "effect": "Another special effect for this hex."
+  },
+  "(-1, 0, 1)": {
+    "title": "Hex 15",
+    "description": "This is the description for hex (x, y, z).",
+    "effect": "Another special effect for this hex."
+  },
+  "(0, 2, 2)": {
+    "title": "Hex 16",
+    "description": "This is the description for hex (x, y, z).",
+    "effect": "Another special effect for this hex."
+  },
+  "(-2, -1, 1)": {
+    "title": "Hex 17",
+    "description": "This is the description for hex (x, y, z).",
+    "effect": "Another special effect for this hex."
+  },
+  "(-1, 1, 2)": {
+    "title": "Hex 18",
+    "description": "This is the description for hex (x, y, z).",
+    "effect": "Another special effect for this hex."
+  },
+  "(-2, 0, 2)": {
+    "title": "Hex placeholder",
+    "description": "This is the description for hex (x, y, z).",
+    "effect": "Another special effect for this hex."
+  }
+}
