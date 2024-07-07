@@ -1,97 +1,97 @@
 {
   "(2, 0)": {
-    "title": "Hex 1",
-    "description": "This is the description for hex (2, 0, -2).",
-    "effect": "Some special effect for this hex."
+    "title": "Lueur d'Espoir",
+    "description": "Le ciel se dégage et révèle de magnifiques lumières multicolores. L'aurore recouvre la majeure partie du ciel et c'est une expérience mémorable. Vos esprits s'apaisent, peut-être que tous ces efforts, ces épreuves que vous devez surmonter, peut-être que tout ça n'est pas en vain... Vous respirez profondément, au fond de vous vous trouvez un regain d'énergie.",
+    "effect": "* Epuisement pour tous -1\n* 1 dé de vie en point de vie temporaires"
   },
   "(1, -1)": {
-    "title": "Hex 2",
-    "description": "This is the description for hex (1, -1, -2).",
-    "effect": "Another special effect for this hex."
+    "title": "Ciel dégagé",
+    "description": "Le ciel se dégage juste assez pour que vous puissiez admirez votre environnement.",
+    "effect": "None"
   },
   "(2, 1)": {
-    "title": "Hex 3",
-    "description": "This is the description for hex (2, 1, -1).",
-    "effect": "Another special effect for this hex."
+    "title": "Ciel dégagé",
+    "description": "Le ciel se dégage juste assez pour que vous puissiez admirez votre environnement.",
+    "effect": "None"
   },
   "(0, -2)": {
-    "title": "Hex 4",
-    "description": "This is the description for hex (0, -2, -2).",
-    "effect": "Another special effect for this hex."
+    "title": "Vent glacial",
+    "description": "Le vent souffle avec violence. Vous peinez à entendre ce qui vous entoure et vous allez devoir vous passer de torche pour le moment... Pourvu que vous n'ayez pas à allumer un feu dans ces conditions, même le meilleur des combustibles aurait du mal à résister à l'assaut de ces bourrasques.",
+    "effect": "Désavantage au attaques avec à distance avec une arme\nImpossibilité de voler\nAudition limitée à 30m\nLes flammes s'éteignent immédiatement"
   },
   "(1, 0)": {
-    "title": "Hex 5",
-    "description": "This is the description for hex (1, 0, -1).",
-    "effect": "Another special effect for this hex."
+    "title": "Ciel dégagé",
+    "description": "Le ciel se dégage juste assez pour que vous puissiez admirez votre environnement.",
+    "effect": "None"
   },
   "(2, 2)": {
-    "title": "Hex 6",
-    "description": "This is the description for hex (x, y, z).",
-    "effect": "Another special effect for this hex."
+    "title": "Brume épaisse",
+    "description": "Un brouillard froid et humide, un brouillard épais et dense tombe soudainement sur vous. Vous avez du mal à vous orienter et la plus grande des peines à même distinguer ce qui se trouve devant vous.",
+    "effect": "Vision réduite à 9m"
   },
   "(0, -1)": {
-    "title": "Hex 7",
-    "description": "This is the description for hex (x, y, z).",
-    "effect": "Another special effect for this hex."
+    "title": "Légers flocons",
+    "description": "Des flocons se mettent à tomber tout autour de vous, ajoutant une dernière couche de neige à des paysages déjà saturé de blancheur. Même si ces petits flocons ne sont pas insupportable, vous sentez le froid s'installer et vous avez du mal à discerner ce qui se trouve à plus de 30m.",
+    "effect": "Vision réduite à 30m"
   },
   "(1, 1)": {
-    "title": "Hex 8",
-    "description": "This is the description for hex (x, y, z).",
-    "effect": "Another special effect for this hex."
+    "title": "Légers flocons",
+    "description": "Des flocons se mettent à tomber tout autour de vous, ajoutant une dernière couche de neige à des paysages déjà saturé de blancheur. Même si ces petits flocons ne sont pas insupportable, vous sentez le froid s'installer et vous avez du mal à discerner ce qui se trouve à plus de 30m.",
+    "effect": "Vision réduite à 30m"
   },
   "(-1, -2)": {
-    "title": "Hex 9",
-    "description": "This is the description for hex (x, y, z).",
-    "effect": "Another special effect for this hex."
+    "title": "Légers flocons",
+    "description": "Des flocons se mettent à tomber tout autour de vous, ajoutant une dernière couche de neige à des paysages déjà saturé de blancheur. Même si ces petits flocons ne sont pas insupportable, vous sentez le froid s'installer et vous avez du mal à discerner ce qui se trouve à plus de 30m.",
+    "effect": "Vision réduite à 30m"
   },
   "(0, 0)": {
-    "title": "Hex 10",
-    "description": "This is the description for hex (x, y, z).",
-    "effect": "Another special effect for this hex."
+    "title": "Chute de neige",
+    "description": "D'épais flocons tombent maintenant du ciel, ils virevoltent nonchalament et bloque votre vue. Le froid se fait plus invasif, vous reserrez écharpes et bonnets en vous frotant les extremités. ",
+    "effect": "Vision réduite à 18m"
   },
   "(1, 2)": {
-    "title": "Hex 11",
-    "description": "This is the description for hex (x, y, z).",
-    "effect": "Another special effect for this hex."
+    "title": "Légers flocons",
+    "description": "Des flocons se mettent à tomber tout autour de vous, ajoutant une dernière couche de neige à des paysages déjà saturé de blancheur. Même si ces petits flocons ne sont pas insupportable, vous sentez le froid s'installer et vous avez du mal à discerner ce qui se trouve à plus de 30m.",
+    "effect": "Vision réduite à 30m"
   },
   "(-1, -1)": {
-    "title": "Hex 12",
-    "description": "This is the description for hex (x, y, z).",
-    "effect": "Another special effect for this hex."
+    "title": "Chute de neige",
+    "description": "D'épais flocons tombent maintenant du ciel, ils virevoltent nonchalament et bloque votre vue. Le froid se fait plus invasif, vous reserrez écharpes et bonnets en vous frotant les extremités. ",
+    "effect": "Vision réduite à 18m"
   },
   "(0, 1)": {
-    "title": "Hex 13",
-    "description": "This is the description for hex (x, y, z).",
-    "effect": "Another special effect for this hex."
+    "title": "Chute de neige",
+    "description": "D'épais flocons tombent maintenant du ciel, ils virevoltent nonchalament et bloque votre vue. Le froid se fait plus invasif, vous reserrez écharpes et bonnets en vous frotant les extremités. ",
+    "effect": "Vision réduite à 18m"
   },
   "(-2, -2)": {
-    "title": "Hex 14",
-    "description": "This is the description for hex (x, y, z).",
-    "effect": "Another special effect for this hex."
+    "title": "Blizzard",
+    "description": "Le vent se lève et des rafales de vents glaciales s'abattent sur le groupe, des gerbes de neige sont soulevés des conggères et se mélangent aux nombreux flocons tombant du ciel. Il devient difficile de voir devant soi, et vous arrivez à peine à entendre ce qui se passe autour de vous. Un blizzard s'est levé.",
+    "effect": "* Le blizzard dure 2d4 heures,\n* Vision réduite à 9m,\n* Audition réduite à 30m,\n* Désavantage aux jets de perception basé sur la vue ou l'ouïe,\n* Les flammes s'éteignent immédiatement,\n* Les traces dans la neige sont effacées,\n* Le brouillard se disperse,\n* Le vol non magique est impossible,\n* Concentration DC pour ne pas perdre sa concentration"
   },
   "(-1, 0)": {
-    "title": "Hex 15",
-    "description": "This is the description for hex (x, y, z).",
-    "effect": "Another special effect for this hex."
+    "title": "Averse glaciale",
+    "description": "Vous sentez une goutelette glaciale sur votre nez, puis sur vos mains, vous levez les yeux vers le ciel. Une pluie verglaçante commence à s'abattre. Il va falloir trouver un abri et vite sous peine de finir trempé. Se balader avec des vêtements trempés dans ce froid glacial vous semble être une très mauvaises idée.",
+    "effect": "* L'averse glaciale dure 1d4 heures\n* Jet de sauvegarde de constitution {setback DC} ou gagner un niveau d'épuisement par heure passé sous la pluie"
   },
   "(0, 2)": {
-    "title": "Hex 16",
-    "description": "This is the description for hex (x, y, z).",
-    "effect": "Another special effect for this hex."
+    "title": "Blizzard",
+    "description": "Le vent se lève et des rafales de vents glaciales s'abattent sur le groupe, des gerbes de neige sont soulevés des conggères et se mélangent aux nombreux flocons tombant du ciel. Il devient difficile de voir devant soi, et vous arrivez à peine à entendre ce qui se passe autour de vous. Un blizzard s'est levé.",
+    "effect": "* Le blizzard dure 2d4 heures,\n* Vision réduite à 9m,\n* Audition réduite à 30m,\n* Désavantage aux jets de perception basé sur la vue ou l'ouïe,\n* Les flammes s'éteignent immédiatement,\n* Les traces dans la neige sont effacées,\n* Le brouillard se disperse,\n* Le vol non magique est impossible,\n* Concentration DC pour ne pas perdre sa concentration"
   },
   "(-2, -1)": {
-    "title": "Hex 17",
-    "description": "This is the description for hex (x, y, z).",
-    "effect": "Another special effect for this hex."
+    "title": "Chute de neige",
+    "description": "D'épais flocons tombent maintenant du ciel, ils virevoltent nonchalament et bloque votre vue. Le froid se fait plus invasif, vous reserrez écharpes et bonnets en vous frotant les extremités. ",
+    "effect": "Vision réduite à 18m"
   },
   "(-1, 1)": {
-    "title": "Hex 18",
-    "description": "This is the description for hex (x, y, z).",
-    "effect": "Another special effect for this hex."
+    "title": "Chute de neige",
+    "description": "D'épais flocons tombent maintenant du ciel, ils virevoltent nonchalament et bloque votre vue. Le froid se fait plus invasif, vous reserrez écharpes et bonnets en vous frotant les extremités. ",
+    "effect": "Vision réduite à 18m"
   },
   "(-2, 0)": {
-    "title": "Hex placeholder",
-    "description": "This is the description for hex (x, y, z).",
-    "effect": "Another special effect for this hex."
+    "title": "Blizzard",
+    "description": "Le vent se lève et des rafales de vents glaciales s'abattent sur le groupe, des gerbes de neige sont soulevés des conggères et se mélangent aux nombreux flocons tombant du ciel. Il devient difficile de voir devant soi, et vous arrivez à peine à entendre ce qui se passe autour de vous. Un blizzard s'est levé.",
+    "effect": "* Le blizzard dure 2d4 heures,\n* Vision réduite à 9m,\n* Audition réduite à 30m,\n* Désavantage aux jets de perception basé sur la vue ou l'ouïe,\n* Les flammes s'éteignent immédiatement,\n* Les traces dans la neige sont effacées,\n* Le brouillard se disperse,\n* Le vol non magique est impossible,\n* Concentration DC pour ne pas perdre sa concentration"
   }
 }
