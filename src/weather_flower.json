@@ -70,7 +70,7 @@
     "effect": "* Le blizzard dure 2d4 heures,\n* Vision réduite à 9m,\n* Audition réduite à 30m,\n* Désavantage aux jets de perception basé sur la vue ou l'ouïe,\n* Les flammes s'éteignent immédiatement,\n* Les traces dans la neige sont effacées,\n* Le brouillard se disperse,\n* Le vol non magique est impossible,\n* Concentration DC pour ne pas perdre sa concentration"
   },
   "(-1, 0)": {
-    "title": "Averse glaciale",
+    "title": "Averse givrante",
     "description": "Vous sentez une goutelette glaciale sur votre nez, puis sur vos mains, vous levez les yeux vers le ciel. Une pluie verglaçante commence à s'abattre. Il va falloir trouver un abri et vite sous peine de finir trempé. Se balader avec des vêtements trempés dans ce froid glacial vous semble être une très mauvaises idée.",
     "effect": "* L'averse glaciale dure 1d4 heures\n* Jet de sauvegarde de constitution {setback DC} ou gagner un niveau d'épuisement par heure passé sous la pluie"
   },
