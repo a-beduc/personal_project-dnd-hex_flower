@@ -2,16 +2,36 @@ import json
 import random
 
 
+class HexEffect:
+    def __init__(self, duration=24, sight="normal", earing="normal", ranged_attack="normal", flame=True, flight=True,
+                 dc_concentration=False, tiredness=0, temporary_hp=0):
+
+        self.duration = duration
+        self.sight = sight
+        self.earing = earing
+        self.ranged_attack = ranged_attack
+        self.flame = flame
+        self.flight = flight
+        self.dc_concentration = dc_concentration
+        self.tiredness = tiredness
+        self.temporary_hp = temporary_hp
+
+    def __repr__(self):
+        return (f"HexEffect(duration={self.duration}, self.sight={self.sight}, self.earing={self.earing}, "
+                f"self.ranged_attack={self.ranged_attack}, self.flame={self.flame}, self.flight={self.flight}, "
+                f"self.dc_concentration={self.dc_concentration}, self.tiredness={self.tiredness}, "
+                f"self.temporary_hp={self.temporary_hp})")
+
+
 class Hex:
-    def __init__(self, x, y, title, description, effect=None):
+    def __init__(self, x, y, title, description, effect: Optional):
         self.x = x
         self.y = y
         self.title = title
         self.description = description
-        self.effect = effect
 
     def __repr__(self):
-        return f"Hex({self.x}, {self.y}, self.{self.title}, {self.description}, {self.effect})"
+        return f"Hex({self.x}, {self.y}, self.{self.title}, {self.description})"
 
 
 class HexGrid:
@@ -43,8 +63,7 @@ class HexGrid:
                     x, y = eval(key)
                     title = value["title"]
                     description = value["description"]
-                    effect = value["effect"]
-                    grid[(x, y)] = Hex(x, y, title, description, effect)
+                    grid[(x, y)] = Hex(x, y, title, description)
         else:
             print("error, no file given")
         return grid
@@ -69,15 +88,15 @@ class HexGrid:
 
         if (direction_name in ("N", "S") and
                 (x < self.min_coord or x > self.max_coord or
-                 (y-x) < self.min_coord or (y-x) > self.max_coord)):
-            new_coordinates = [coordinates[1]-coordinates[0], coordinates[1]]
+                 (y - x) < self.min_coord or (y - x) > self.max_coord)):
+            new_coordinates = [coordinates[1] - coordinates[0], coordinates[1]]
 
         if (direction_name in ("NW", "SW", "NE", "SE") and
                 (x < self.min_coord or x > self.max_coord or
                  y < self.min_coord or y > self.max_coord or
-                 (y-x) < self.min_coord or (y-x) > self.max_coord)):
+                 (y - x) < self.min_coord or (y - x) > self.max_coord)):
             if direction_name in ("NW", "SE"):
-                new_coordinates = [coordinates[0], -(coordinates[1]-coordinates[0])]
+                new_coordinates = [coordinates[0], -(coordinates[1] - coordinates[0])]
             else:
                 new_coordinates = [-coordinates[1], -coordinates[0]]
         return tuple(new_coordinates)
@@ -116,8 +135,7 @@ def main():
         new_position = new_hex_grid.move_current_position(randomx)
         print(f"Direction : {randomx}")
         print(f"Current position : {new_position}")
-        print(f"Description : {new_hex_grid.get_hex(new_hex_grid.current_position).description}\n"
-              f"Effects : {new_hex_grid.get_hex(new_hex_grid.current_position).effect}")
+        print(f"Description : {new_hex_grid.get_hex(new_hex_grid.current_position).description}\n")
 
 
 if __name__ == "__main__":
