@@ -32,7 +32,7 @@ def main():
     img_bloc = tk.Frame(frame, padx=5, pady=5)
     img_bloc.grid(row=0, rowspan=10, column=0)
 
-    img = Image.open("Fleur_Climat_cleaned-coord.png")
+    img = Image.open("src/Fleur_Climat_cleaned-coord.png")
     img.thumbnail((400, 400), Image.Resampling.LANCZOS)
     img_tk = ImageTk.PhotoImage(img)
     display = tk.Label(img_bloc, image=img_tk)
