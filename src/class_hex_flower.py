@@ -24,14 +24,15 @@ class HexEffect:
 
 
 class Hex:
-    def __init__(self, x, y, title, description, effect: Optional):
+    def __init__(self, x, y, title, description):
         self.x = x
         self.y = y
         self.title = title
         self.description = description
+        self.effect = HexEffect()
 
     def __repr__(self):
-        return f"Hex({self.x}, {self.y}, self.{self.title}, {self.description})"
+        return f"Hex({self.x}, {self.y}, {self.title}, {self.description}, effect={self.effect})"
 
 
 class HexGrid:
@@ -63,7 +64,20 @@ class HexGrid:
                     x, y = eval(key)
                     title = value["title"]
                     description = value["description"]
-                    grid[(x, y)] = Hex(x, y, title, description)
+                    effect = HexEffect(
+                        duration=value.get("duration", 24),
+                        sight=value.get("sight", "normal"),
+                        earing=value.get("earing", "normal"),
+                        ranged_attack=value.get("ranged_attack", "normal"),
+                        flame=value.get("flame", True),
+                        flight=value.get("flight", True),
+                        dc_concentration=value.get("dc_concentration", False),
+                        tiredness=value.get("tiredness", 0),
+                        temporary_hp=value.get("temporary_hp", 0)
+                    )
+                    hex_tile = Hex(x, y, title, description)
+                    hex_tile.effect = effect
+                    grid[(x, y)] = hex_tile
         else:
             print("error, no file given")
         return grid
@@ -135,7 +149,10 @@ def main():
         new_position = new_hex_grid.move_current_position(randomx)
         print(f"Direction : {randomx}")
         print(f"Current position : {new_position}")
+        print(f"Title : {new_hex_grid.get_hex(new_hex_grid.current_position).title}\n")
         print(f"Description : {new_hex_grid.get_hex(new_hex_grid.current_position).description}\n")
+        print(f"Effect : {new_hex_grid.get_hex(new_hex_grid.current_position).effect}")
+        print(f"Durée : {new_hex_grid.get_hex(new_hex_grid.current_position).effect.duration}")
 
 
 if __name__ == "__main__":
