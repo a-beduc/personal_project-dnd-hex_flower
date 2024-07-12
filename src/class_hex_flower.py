@@ -1,12 +1,13 @@
 import json
 import random
+import re
 
 
 class HexEffect:
-    def __init__(self, duration=24, sight="normal", earing="normal", ranged_attack="normal", flame=True, flight=True,
-                 dc_concentration=False, tiredness=0, temporary_hp=0):
+    def __init__(self, duration="", sight="", earing="", ranged_attack="", flame="", flight="",
+                 dc_concentration="", tiredness="", temporary_hp=""):
 
-        self.duration = duration
+        self.duration = self.dynamic_duration(duration)
         self.sight = sight
         self.earing = earing
         self.ranged_attack = ranged_attack
@@ -15,6 +16,21 @@ class HexEffect:
         self.dc_concentration = dc_concentration
         self.tiredness = tiredness
         self.temporary_hp = temporary_hp
+
+    @staticmethod
+    def dynamic_duration(value):
+        if value is not None:
+            match1 = re.match(r"1d4", value)
+            match2 = re.match(r"2d4", value)
+            match3 = re.match(r"2d6", value)
+            if match1:
+                return random.randint(1, 4)
+            elif match2:
+                return random.randint(1, 4)+random.randint(1, 4)
+            elif match3:
+                return random.randint(1, 6)+random.randint(1, 6)
+            else:
+                return value
 
     def __repr__(self):
         return (f"HexEffect(duration={self.duration}, self.sight={self.sight}, self.earing={self.earing}, "
@@ -58,22 +74,22 @@ class HexGrid:
     def init_grid(init_file=None):
         grid = {}
         if init_file is not None:
-            with open(init_file, "r") as file:
+            with open(init_file, "r", encoding="utf-8") as file:
                 data = json.load(file)
                 for key, value in data.items():
                     x, y = eval(key)
                     title = value["title"]
                     description = value["description"]
                     effect = HexEffect(
-                        duration=value.get("duration", 24),
-                        sight=value.get("sight", "normal"),
-                        earing=value.get("earing", "normal"),
-                        ranged_attack=value.get("ranged_attack", "normal"),
-                        flame=value.get("flame", True),
-                        flight=value.get("flight", True),
-                        dc_concentration=value.get("dc_concentration", False),
-                        tiredness=value.get("tiredness", 0),
-                        temporary_hp=value.get("temporary_hp", 0)
+                        duration=value.get("duration", ""),
+                        sight=value.get("sight", ""),
+                        earing=value.get("earing", ""),
+                        ranged_attack=value.get("ranged_attack", ""),
+                        flame=value.get("flame", ""),
+                        flight=value.get("flight", ""),
+                        dc_concentration=value.get("dc_concentration", ""),
+                        tiredness=value.get("tiredness", ""),
+                        temporary_hp=value.get("temporary_hp", "")
                     )
                     hex_tile = Hex(x, y, title, description)
                     hex_tile.effect = effect
@@ -146,7 +162,7 @@ def main():
     while question not in ("N", "n"):
         question = input("Keep moving ? (Y/N) ")
         randomx = random_move()
-        new_position = new_hex_grid.move_current_position(randomx)
+        new_position = new_hex_grid.current_position(1, 0)
         print(f"Direction : {randomx}")
         print(f"Current position : {new_position}")
         print(f"Title : {new_hex_grid.get_hex(new_hex_grid.current_position).title}\n")
