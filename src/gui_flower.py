@@ -1,111 +1,177 @@
 import tkinter as tk
 from tkinter import ttk
 from PIL import ImageTk, Image
+from class_hex_flower import HexGrid, random_move
+
+
+class GUI:
+    def __init__(self, root):
+        self.root = root
+        self.root.configure(background="#2b2d30")
+        self.root.geometry("800x600")
+        self.root.title("Hex Flower")
+        self.root.resizable(False, False)
+
+        self.frame = tk.Frame(self.root, padx=10, pady=10, bg="white")
+        self.frame.pack(fill="both", expand=True, padx=10, pady=10)
+        self.configure_grid(self.frame)
+
+        self.hex_grid = HexGrid(init_file="weather_flower.json")
+
+        self.img_tk = None
+        self.title = None
+        self.current_pos = None
+        self.combo = None
+        self.current_duration = None
+        self.current_sight = None
+        self.current_earing = None
+        self.current_ranged_attack = None
+        self.current_flame = None
+        self.current_flight = None
+        self.current_dc = None
+        self.current_tiredness = None
+        self.current_temporary_hp = None
+        self.description = None
+
+        self.create_widgets()
+        self.update_position_label()
+
+    @staticmethod
+    def configure_grid(frame):
+        for col in range(4):
+            frame.columnconfigure(col, weight=1)
+        for row in range(13):
+            frame.rowconfigure(row, weight=1)
+
+    def create_widgets(self):
+        img_bloc = tk.Frame(self.frame, padx=5, pady=5)
+        img_bloc.grid(row=0, rowspan=10, column=0)
+
+        img = Image.open("Fleur_Climat_cleaned-coord.png")
+        img.thumbnail((400, 400), Image.Resampling.LANCZOS)
+        self.img_tk = ImageTk.PhotoImage(img)
+        display = tk.Label(img_bloc, image=self.img_tk)
+        display.pack(expand=True)
+
+        self.title = tk.Label(self.frame, text="Fleur du temps")
+        self.title.grid(row=0, column=1, columnspan=3, sticky="nsew")
+
+        self.current_pos = tk.Label(self.frame, text="")
+        self.current_pos.grid(row=1, column=1, sticky="nsew")
+
+        forced_position = ["(2, 0)", "(1, -1)", "(2, 1)", "(0, -2)", "(1, 0)",
+                           "(2, 2)", "(0, -1)", "(1, 1)", "(-1, -2)", "(0, 0)",
+                           "(1, 2)", "(-1, -1)", "(0, 1)", "(-2, -2)", "(-1, 0)",
+                           "(0, 2)", "(-2, -1)", "(-1, 1)", "(-2, 0)"]
+
+        self.combo = ttk.Combobox(self.frame, values=forced_position)
+        self.combo.grid(row=1, column=2, sticky="nsew")
+
+        go_button = tk.Button(self.frame, text="go", command=self.go_action)
+        go_button.grid(row=1, column=3, sticky="nsew")
+
+        return_button = tk.Button(self.frame, text="back", command=self.back_action)
+        return_button.grid(row=2, column=1, sticky="nsew")
+
+        next_button = tk.Button(self.frame, text="next", command=self.next_action)
+        next_button.grid(row=2, column=2, columnspan=2, sticky="nsew")
+
+        effect_title = tk.Label(self.frame, text="Liste des effets")
+        effect_title.grid(row=3, column=1, columnspan=3, sticky="nsew")
+
+        effect_duration = tk.Label(self.frame, text="Durée :")
+        effect_duration.grid(row=4, column=1, sticky="nsew")
+
+        self.current_duration = tk.Label(self.frame, text="")
+        self.current_duration.grid(row=4, column=2, columnspan=2, sticky="nsew")
+
+        effect_sight = tk.Label(self.frame, text="Vue :")
+        effect_sight.grid(row=5, column=1, sticky="nsew")
+
+        self.current_sight = tk.Label(self.frame, text="")
+        self.current_sight.grid(row=5, column=2, columnspan=2, sticky="nsew")
+
+        effect_earing = tk.Label(self.frame, text="Audition :")
+        effect_earing.grid(row=6, column=1, sticky="nsew")
+
+        self.current_earing = tk.Label(self.frame, text="")
+        self.current_earing.grid(row=6, column=2, columnspan=2, sticky="nsew")
+
+        effect_ranged_attack = tk.Label(self.frame, text="Attaque à distance :")
+        effect_ranged_attack.grid(row=7, column=1, sticky="nsew")
+
+        self.current_ranged_attack = tk.Label(self.frame, text="")
+        self.current_ranged_attack.grid(row=7, column=2, columnspan=2, sticky="nsew")
+
+        effect_flame = tk.Label(self.frame, text="Flame :")
+        effect_flame.grid(row=8, column=1, sticky="nsew")
+
+        self.current_flame = tk.Label(self.frame, text="")
+        self.current_flame.grid(row=8, column=2, columnspan=2, sticky="nsew")
+
+        effect_flight = tk.Label(self.frame, text="Vol :")
+        effect_flight.grid(row=9, column=1, sticky="nsew")
+
+        self.current_flight = tk.Label(self.frame, text="")
+        self.current_flight.grid(row=9, column=2, columnspan=2, sticky="nsew")
+
+        effect_dc = tk.Label(self.frame, text="DC :")
+        effect_dc.grid(row=10, column=1, sticky="nsew")
+
+        self.current_dc = tk.Label(self.frame, text="")
+        self.current_dc.grid(row=10, column=2, columnspan=2, sticky="nsew")
+
+        effect_tiredness = tk.Label(self.frame, text="Épuisement :")
+        effect_tiredness.grid(row=11, column=1, sticky="nsew")
+
+        self.current_tiredness = tk.Label(self.frame, text="")
+        self.current_tiredness.grid(row=11, column=2, columnspan=2, sticky="nsew")
+
+        effect_temporary_hp = tk.Label(self.frame, text="PdV Temp :")
+        effect_temporary_hp.grid(row=12, column=1, sticky="nsew")
+
+        self.current_temporary_hp = tk.Label(self.frame, text="")
+        self.current_temporary_hp.grid(row=12, column=2, columnspan=2, sticky="nsew")
+
+        description_title = tk.Label(self.frame, text="Description :")
+        description_title.grid(row=10, column=0, sticky="nsew")
+
+        self.description = tk.Label(self.frame, text="", justify="left", wraplength=300)
+        self.description.grid(row=11, rowspan=2, column=0, sticky="nsew")
+
+    def update_position_label(self, direction=""):
+        self.current_pos.config(text=direction + " " + str(self.hex_grid.current_position))
+        self.title.config(text=str(self.hex_grid.get_hex(self.hex_grid.current_position).title))
+        self.current_duration.config(text=str(self.hex_grid.get_hex(self.hex_grid.current_position).effect.duration))
+        self.current_sight.config(text=str(self.hex_grid.get_hex(self.hex_grid.current_position).effect.sight))
+        self.current_earing.config(text=str(self.hex_grid.get_hex(self.hex_grid.current_position).effect.earing))
+        self.current_ranged_attack.config(
+            text=str(self.hex_grid.get_hex(self.hex_grid.current_position).effect.ranged_attack))
+        self.current_flame.config(text=str(self.hex_grid.get_hex(self.hex_grid.current_position).effect.flame))
+        self.current_flight.config(text=str(self.hex_grid.get_hex(self.hex_grid.current_position).effect.flight))
+        self.current_dc.config(text=str(self.hex_grid.get_hex(self.hex_grid.current_position).effect.dc_concentration))
+        self.current_tiredness.config(text=str(self.hex_grid.get_hex(self.hex_grid.current_position).effect.tiredness))
+        self.current_temporary_hp.config(
+            text=str(self.hex_grid.get_hex(self.hex_grid.current_position).effect.temporary_hp))
+        self.description.config(text=str(self.hex_grid.get_hex(self.hex_grid.current_position).description))
+
+    def go_action(self):
+        pass
+
+    def back_action(self):
+        # Implémenter l'action du bouton "back"
+        pass
+
+    def next_action(self):
+        direction = random_move()
+        self.hex_grid.move_current_position(direction)
+        self.update_position_label(direction)
 
 
 def main():
-    gui = tk.Tk()
-    gui.configure(bg="#2b2d30")
-    gui.geometry("800x600")
-    gui.title("Weather Flower GUI")
-
-    frame = tk.Frame(gui, padx=10, pady=10, bg="white")
-    frame.pack(fill="both", expand=True, padx=10, pady=10)
-    frame.columnconfigure(0, weight=1)
-    frame.columnconfigure(1, weight=1)
-    frame.columnconfigure(2, weight=1)
-    frame.columnconfigure(3, weight=1)
-    frame.rowconfigure(0, weight=1)
-    frame.rowconfigure(1, weight=1)
-    frame.rowconfigure(2, weight=1)
-    frame.rowconfigure(3, weight=1)
-    frame.rowconfigure(4, weight=1)
-    frame.rowconfigure(5, weight=1)
-    frame.rowconfigure(6, weight=1)
-    frame.rowconfigure(7, weight=1)
-    frame.rowconfigure(8, weight=1)
-    frame.rowconfigure(9, weight=1)
-    frame.rowconfigure(10, weight=1)
-    frame.rowconfigure(11, weight=1)
-    frame.rowconfigure(11, weight=1)
-    frame.rowconfigure(12, weight=1)
-
-
-    img_bloc = tk.Frame(frame, padx=5, pady=5)
-    img_bloc.grid(row=0, rowspan=10, column=0)
-
-    img = Image.open("Fleur_Climat_cleaned-coord.png")
-    img.thumbnail((400, 400), Image.Resampling.LANCZOS)
-    img_tk = ImageTk.PhotoImage(img)
-    display = tk.Label(img_bloc, image=img_tk)
-    display.pack(expand=True)
-
-    title = tk.Label(frame, text="Fleur du temps")
-    title.grid(row=0, column=1, columnspan=3, sticky="nsew")
-
-    position = "(1, -1)"
-    current_pos = tk.Label(frame, text=position)
-    current_pos.grid(row=1, column=1, sticky="nsew")
-
-    forced_position = ["(2, 0)", "(1, -1)", "(2, 1)", "(0, -2)", "(1, 0)",
-                       "(2, 2)", "(0, -1)", "(1, 1)", "(-1, -2)", "(0, 0)",
-                       "(1, 2)", "(-1, -1)", "(0, 1)", "(-2, -2)", "(-1, 0)",
-                       "(0, 2)", "(-2, -1)", "(-1, 1)", "(-2, 0)"]
-
-    combo = ttk.Combobox(frame, values=forced_position)
-    combo.grid(row=1, column=2, sticky="nsew")
-
-    go_button = tk.Button(frame, text="go")
-    go_button.grid(row=1, column=3, sticky="nsew")
-
-    return_button = tk.Button(frame, text="back")
-    return_button.grid(row=2, column=1, sticky="nsew")
-
-    next_button = tk.Button(frame, text="next")
-    next_button.grid(row=2, column=2, columnspan=2, sticky="nsew")
-
-    effect_title = tk.Label(frame, text="Liste des effets")
-    effect_title.grid(row=3, column=1, columnspan=3, sticky="nsew")
-
-    effect_duration = tk.Label(frame, text="Durée :")
-    effect_duration.grid(row=4, column=1, sticky="nsew")
-
-    effect_sight = tk.Label(frame, text="Vue :")
-    effect_sight.grid(row=5, column=1, sticky="nsew")
-
-    effect_earing = tk.Label(frame, text="Audition :")
-    effect_earing.grid(row=6, column=1, sticky="nsew")
-
-    effect_ranged_attack = tk.Label(frame, text="Attaque à distance :")
-    effect_ranged_attack.grid(row=7, column=1, sticky="nsew")
-
-    effect_flame = tk.Label(frame, text="Flame :")
-    effect_flame.grid(row=8, column=1, sticky="nsew")
-
-    effect_flight = tk.Label(frame, text="Vol :")
-    effect_flight.grid(row=9, column=1, sticky="nsew")
-
-    effect_dc = tk.Label(frame, text="DC :")
-    effect_dc.grid(row=10, column=1, sticky="nsew")
-
-    effect_tiredness = tk.Label(frame, text="Épuisement :")
-    effect_tiredness.grid(row=11, column=1, sticky="nsew")
-
-    effect_temporary_hp = tk.Label(frame, text="PdV Temp :")
-    effect_temporary_hp.grid(row=12, column=1, sticky="nsew")
-
-    description_title = tk.Label(frame, text="Description :")
-    description_title.grid(row=10, column=0, sticky="nsew")
-
-    description = ("Le vent se lève et des rafales de vents glaciales s'abattent sur le groupe, des gerbes de neige "
-                   "sont soulevés des conggères et se mélangent aux nombreux flocons tombant du ciel. Il devient "
-                   "difficile de voir devant soi, et vous arrivez à peine à entendre ce qui se passe autour de vous. "
-                   "Un blizzard s'est levé.")
-    text_description = tk.Label(frame, text=description, justify="left", wraplength=300)
-    text_description.grid(row=11, rowspan=2, column=0, sticky="nsew")
-
-
-    gui.mainloop()
+    root = tk.Tk()
+    GUI(root)
+    root.mainloop()
 
 
 if __name__ == '__main__':
