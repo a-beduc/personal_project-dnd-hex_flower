@@ -1,3 +1,4 @@
+import ast
 import tkinter as tk
 from tkinter import ttk
 from PIL import ImageTk, Image
@@ -45,13 +46,20 @@ class GUI:
 
     def create_widgets(self):
         img_bloc = tk.Frame(self.frame, padx=5, pady=5)
-        img_bloc.grid(row=0, rowspan=10, column=0)
+        img_bloc.grid(row=0, rowspan=10, column=0, sticky="nw")
 
-        img = Image.open("Fleur_Climat_cleaned-coord.png")
-        img.thumbnail((400, 400), Image.Resampling.LANCZOS)
-        self.img_tk = ImageTk.PhotoImage(img)
-        display = tk.Label(img_bloc, image=self.img_tk)
-        display.pack(expand=True)
+        self.canvas = tk.Canvas(img_bloc, width=400, height=400)
+        self.canvas.pack()
+
+        base_img = Image.open("Fleur_Climat_cleaned-coord.png")
+        base_img.thumbnail((400, 400), Image.Resampling.LANCZOS)
+        self.base_img_tk = ImageTk.PhotoImage(base_img)
+        self.canvas.create_image(0, 0, anchor=tk.NW, image=self.base_img_tk)
+
+        dot = Image.open("dot.png")
+        dot.thumbnail((8, 8), Image.Resampling.LANCZOS)
+        self.dot_tk = ImageTk.PhotoImage(dot)
+        self.dot_id = self.canvas.create_image(267, 250, anchor=tk.CENTER, image=self.dot_tk)
 
         self.title = tk.Label(self.frame, text="Fleur du temps")
         self.title.grid(row=0, column=1, columnspan=3, sticky="nsew")
@@ -156,7 +164,11 @@ class GUI:
         self.description.config(text=str(self.hex_grid.get_hex(self.hex_grid.current_position).description))
 
     def go_action(self):
-        pass
+        selected_value = self.combo.get()
+        if selected_value:
+            selected_position = ast.literal_eval(selected_value)
+            self.hex_grid.current_position = selected_position
+            self.update_position_label("")
 
     def back_action(self):
         # Implémenter l'action du bouton "back"
