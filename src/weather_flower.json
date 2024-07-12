@@ -3,7 +3,7 @@
     "title": "Lueur d'Espoir",
     "description": "Le ciel se dégage et révèle de magnifiques lumières multicolores. L'aurore recouvre la majeure partie du ciel et c'est une expérience mémorable. Vos esprits s'apaisent, peut-être que tous ces efforts, ces épreuves que vous devez surmonter, peut-être que tout ça n'est pas en vain... Vous respirez profondément, au fond de vous vous trouvez un regain d'énergie.",
     "tiredness": "-1",
-    "temporary_hp": "1 dé de vie en point de vie temporaires"
+    "temporary_hp": "1 DdV en Temp HP"
   },
   "(1, -1)": {
     "title": "Ciel dégagé",
@@ -19,8 +19,8 @@
     "duration": "2d6",
     "earing": "Désavantage, limitée à 30m",
     "ranged_attack": "Désavantage",
-    "flame": "False",
-    "flight": "False"
+    "flame": "Eteintes",
+    "flight": "Impossible"
   },
   "(1, 0)": {
     "title": "Ciel dégagé",
@@ -74,17 +74,17 @@
     "sight": "Désavantage, limitée à 9m",
     "earing": "Désavantage, limitée à 30m",
     "ranged_attack": "Désavantage",
-    "flame": "False",
-    "flight": "False",
-    "dc_concentration": "True"
+    "flame": "Eteintes",
+    "flight": "Impossible",
+    "dc_concentration": "DC Concentration par round"
   },
   "(-1, 0)": {
     "title": "Averse givrante",
     "description": "Vous sentez une goutelette glaciale sur votre nez, puis sur vos mains, vous levez les yeux vers le ciel. Une pluie verglaçante commence à s'abattre. Il va falloir trouver un abri et vite sous peine de finir trempé. Se balader avec des vêtements trempés dans ce froid glacial vous semble être une très mauvaises idée.",
     "duration": "1d4 heures",
-    "flame": "False",
-    "dc_concentration": "Jet de sauvegarde de constitution {setback DC} ou gagner un niveau d'épuisement par heure passé sous la pluie",
-    "tiredness": "+1 par heure"
+    "flame": "Eteintes",
+    "dc_concentration": "DC con 14 ou Epuis.",
+    "tiredness": "+1 par heure si DC raté"
   },
   "(0, 2)": {
     "title": "Blizzard",
@@ -93,9 +93,9 @@
     "sight": "Désavantage, limitée à 9m",
     "earing": "Désavantage, limitée à 30m",
     "ranged_attack": "Désavantage",
-    "flame": "False",
-    "flight": "False",
-    "dc_concentration": "True"
+    "flame": "Eteintes",
+    "flight": "Impossible",
+    "dc_concentration": "DC Concentration par round"
   },
   "(-2, -1)": {
     "title": "Chute de neige",
@@ -114,8 +114,8 @@
     "sight": "Désavantage, limitée à 9m",
     "earing": "Désavantage, limitée à 30m",
     "ranged_attack": "Désavantage",
-    "flame": "False",
-    "flight": "False",
-    "dc_concentration": "True"
+    "flame": "Eteintes",
+    "flight": "Impossible",
+    "dc_concentration": "DC Concentration par round"
   }
 }
