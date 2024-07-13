@@ -1,3 +1,4 @@
+import ast
 import tkinter as tk
 from tkinter import ttk
 from PIL import ImageTk, Image
@@ -8,7 +9,7 @@ class GUI:
     def __init__(self, root):
         self.root = root
         self.root.configure(background="#2b2d30")
-        self.root.geometry("800x600")
+        self.root.geometry("800x650")
         self.root.title("Hex Flower")
         self.root.resizable(False, False)
 
@@ -41,17 +42,25 @@ class GUI:
         for col in range(4):
             frame.columnconfigure(col, weight=1)
         for row in range(13):
-            frame.rowconfigure(row, weight=1)
+            frame.rowconfigure(row, weight=1, minsize=47)
+        frame.rowconfigure(13, weight=1, minsize=10)
 
     def create_widgets(self):
         img_bloc = tk.Frame(self.frame, padx=5, pady=5)
-        img_bloc.grid(row=0, rowspan=10, column=0)
+        img_bloc.grid(row=0, rowspan=9, column=0, sticky="nw")
 
-        img = Image.open("Fleur_Climat_cleaned-coord.png")
-        img.thumbnail((400, 400), Image.Resampling.LANCZOS)
-        self.img_tk = ImageTk.PhotoImage(img)
-        display = tk.Label(img_bloc, image=self.img_tk)
-        display.pack(expand=True)
+        self.canvas = tk.Canvas(img_bloc, width=400, height=400)
+        self.canvas.pack()
+
+        base_img = Image.open("Fleur_Climat_cleaned-coord.png")
+        base_img.thumbnail((400, 400), Image.Resampling.LANCZOS)
+        self.base_img_tk = ImageTk.PhotoImage(base_img)
+        self.canvas.create_image(0, 0, anchor=tk.NW, image=self.base_img_tk)
+
+        dot = Image.open("dot.png")
+        dot.thumbnail((8, 8), Image.Resampling.LANCZOS)
+        self.dot_tk = ImageTk.PhotoImage(dot)
+        self.dot_id = self.canvas.create_image(200, 130, anchor=tk.CENTER, image=self.dot_tk)
 
         self.title = tk.Label(self.frame, text="Fleur du temps")
         self.title.grid(row=0, column=1, columnspan=3, sticky="nsew")
@@ -133,39 +142,45 @@ class GUI:
         self.current_temporary_hp = tk.Label(self.frame, text="")
         self.current_temporary_hp.grid(row=12, column=2, columnspan=2, sticky="nsew")
 
-        description_title = tk.Label(self.frame, text="Description :")
-        description_title.grid(row=10, column=0, sticky="nsew")
-
         self.description = tk.Label(self.frame, text="", justify="left", wraplength=300)
-        self.description.grid(row=11, rowspan=2, column=0, sticky="nsew")
+        self.description.grid(row=9, rowspan=4, column=0, sticky="nsew")
 
     def update_position_label(self, direction=""):
         self.current_pos.config(text=direction + " " + str(self.hex_grid.current_position))
-        self.title.config(text=str(self.hex_grid.get_hex(self.hex_grid.current_position).title))
-        self.current_duration.config(text=str(self.hex_grid.get_hex(self.hex_grid.current_position).effect.duration))
-        self.current_sight.config(text=str(self.hex_grid.get_hex(self.hex_grid.current_position).effect.sight))
-        self.current_earing.config(text=str(self.hex_grid.get_hex(self.hex_grid.current_position).effect.earing))
+        hex_tile=self.hex_grid.get_hex(self.hex_grid.current_position)
+        self.title.config(text=str(hex_tile.title))
+        self.current_duration.config(text=str(hex_tile.effect.duration))
+        self.current_sight.config(text=str(hex_tile.effect.sight))
+        self.current_earing.config(text=str(hex_tile.effect.earing))
         self.current_ranged_attack.config(
-            text=str(self.hex_grid.get_hex(self.hex_grid.current_position).effect.ranged_attack))
-        self.current_flame.config(text=str(self.hex_grid.get_hex(self.hex_grid.current_position).effect.flame))
-        self.current_flight.config(text=str(self.hex_grid.get_hex(self.hex_grid.current_position).effect.flight))
-        self.current_dc.config(text=str(self.hex_grid.get_hex(self.hex_grid.current_position).effect.dc_concentration))
-        self.current_tiredness.config(text=str(self.hex_grid.get_hex(self.hex_grid.current_position).effect.tiredness))
+            text=str(hex_tile.effect.ranged_attack))
+        self.current_flame.config(text=str(hex_tile.effect.flame))
+        self.current_flight.config(text=str(hex_tile.effect.flight))
+        self.current_dc.config(text=str(hex_tile.effect.dc_concentration))
+        self.current_tiredness.config(text=str(hex_tile.effect.tiredness))
         self.current_temporary_hp.config(
-            text=str(self.hex_grid.get_hex(self.hex_grid.current_position).effect.temporary_hp))
-        self.description.config(text=str(self.hex_grid.get_hex(self.hex_grid.current_position).description))
+            text=str(hex_tile.effect.temporary_hp))
+        self.description.config(text=str(hex_tile.description))
+
+        self.canvas.coords(self.dot_id, hex_tile.small_image_coords[0], hex_tile.small_image_coords[1])
 
     def go_action(self):
-        pass
+        selected_value = self.combo.get()
+        if selected_value:
+            selected_position = ast.literal_eval(selected_value)
+            self.hex_grid.forced_position(selected_position)
+            self.update_position_label("")
 
     def back_action(self):
-        # Implémenter l'action du bouton "back"
-        pass
+        self.hex_grid.move_previous_position()
+        self.update_position_label("")
 
     def next_action(self):
         direction = random_move()
         self.hex_grid.move_current_position(direction)
         self.update_position_label(direction)
+
+
 
 
 def main():
