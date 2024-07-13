@@ -172,8 +172,8 @@ class GUI:
             self.update_position_label("")
 
     def back_action(self):
-        # Implémenter l'action du bouton "back"
-        pass
+        self.hex_grid.move_previous_position()
+        self.update_position_label("")
 
     def next_action(self):
         direction = random_move()

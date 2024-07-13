@@ -26,9 +26,9 @@ class HexEffect:
             if match1:
                 return random.randint(1, 4)
             elif match2:
-                return random.randint(1, 4)+random.randint(1, 4)
+                return random.randint(1, 4) + random.randint(1, 4)
             elif match3:
-                return random.randint(1, 6)+random.randint(1, 6)
+                return random.randint(1, 6) + random.randint(1, 6)
             else:
                 return value
 
@@ -49,7 +49,27 @@ class Hex:
         self.small_image_coords = small_image_coords or [0, 0]
 
     def __repr__(self):
-        return f"Hex({self.x}, {self.y}, {self.title}, {self.description}, effect={self.effect, self.small_image_coords})"
+        return (f"Hex({self.x}, {self.y}, {self.title}, {self.description}, "
+                f"effect={self.effect, self.small_image_coords})")
+
+
+class HexMemory:
+    def __init__(self, max_memory=5):
+        self.max_memory = max_memory
+        self.memory = []
+
+    def add_position(self, position):
+        if len(self.memory) >= self.max_memory:
+            self.memory.pop(0)
+        self.memory.append(position)
+
+    def get_previous_position(self):
+        if self.memory:
+            return self.memory[-1]
+        return None
+
+    def get_all_positions(self):
+        return self.memory.copy()
 
 
 class HexGrid:
@@ -68,6 +88,7 @@ class HexGrid:
     def __init__(self, init_file=None, current_position=(1, 0)):
         self.min_coord = -2
         self.max_coord = 2
+        self.hex_memory = HexMemory()
         self.grid = self.init_grid(init_file)
         self.current_position = current_position
 
@@ -134,9 +155,16 @@ class HexGrid:
         return tuple(new_coordinates)
 
     def move_current_position(self, direction_name):
+        self.hex_memory.add_position(self.current_position)
         self.current_position = self.move(self.current_position, direction_name)
         return self.current_position
 
+    def move_previous_position(self):
+        previous_position = self.hex_memory.get_previous_position()
+        if previous_position:
+            self.current_position = previous_position
+            self.hex_memory.memory.pop()
+        return self.current_position
 
 def random_move():
     probability = random.uniform(0, 100)
@@ -164,13 +192,20 @@ def main():
     while question not in ("N", "n"):
         question = input("Keep moving ? (Y/N) ")
         randomx = random_move()
-        new_position = new_hex_grid.current_position(1, 0)
+        new_position = new_hex_grid.move_current_position(randomx)
         print(f"Direction : {randomx}")
         print(f"Current position : {new_position}")
-        print(f"Title : {new_hex_grid.get_hex(new_hex_grid.current_position).title}\n")
-        print(f"Description : {new_hex_grid.get_hex(new_hex_grid.current_position).description}\n")
-        print(f"Effect : {new_hex_grid.get_hex(new_hex_grid.current_position).effect}")
-        print(f"Durée : {new_hex_grid.get_hex(new_hex_grid.current_position).effect.duration}")
+        print(f"Memory : {new_hex_grid.hex_memory.get_all_positions()}")
+
+    print("-------------")
+    print(f"Memory : {new_hex_grid.hex_memory.get_all_positions()}")
+    question2 = ""
+    while question2 not in ("N", "n"):
+        question2 = input("go back ? (Y/N) ")
+        new_position = new_hex_grid.move_previous_position()
+        print(f"Current position : {new_position}")
+        print(f"Memory : {new_hex_grid.hex_memory.get_all_positions()}")
+
 
 
 if __name__ == "__main__":
