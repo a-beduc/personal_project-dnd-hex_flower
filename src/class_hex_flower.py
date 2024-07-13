@@ -40,15 +40,16 @@ class HexEffect:
 
 
 class Hex:
-    def __init__(self, x, y, title, description):
+    def __init__(self, x, y, title, description, small_image_coords=None):
         self.x = x
         self.y = y
         self.title = title
         self.description = description
         self.effect = HexEffect()
+        self.small_image_coords = small_image_coords or [0, 0]
 
     def __repr__(self):
-        return f"Hex({self.x}, {self.y}, {self.title}, {self.description}, effect={self.effect})"
+        return f"Hex({self.x}, {self.y}, {self.title}, {self.description}, effect={self.effect, self.small_image_coords})"
 
 
 class HexGrid:
@@ -80,6 +81,7 @@ class HexGrid:
                     x, y = eval(key)
                     title = value["title"]
                     description = value["description"]
+                    small_image_coords = value.get("small_image_coords", [0, 0])
                     effect = HexEffect(
                         duration=value.get("duration", ""),
                         sight=value.get("sight", ""),
@@ -91,7 +93,7 @@ class HexGrid:
                         tiredness=value.get("tiredness", ""),
                         temporary_hp=value.get("temporary_hp", "")
                     )
-                    hex_tile = Hex(x, y, title, description)
+                    hex_tile = Hex(x, y, title, description, small_image_coords)
                     hex_tile.effect = effect
                     grid[(x, y)] = hex_tile
         else:
