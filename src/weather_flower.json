@@ -3,15 +3,18 @@
     "title": "Lueur d'Espoir",
     "description": "Le ciel se dégage et révèle de magnifiques lumières multicolores. L'aurore recouvre la majeure partie du ciel et c'est une expérience mémorable. Vos esprits s'apaisent, peut-être que tous ces efforts, ces épreuves que vous devez surmonter, peut-être que tout ça n'est pas en vain... Vous respirez profondément, au fond de vous vous trouvez un regain d'énergie.",
     "tiredness": "-1",
-    "temporary_hp": "1 DdV en Temp HP"
+    "temporary_hp": "1 DdV en Temp HP",
+    "small_image_coords": [200, 55]
   },
   "(1, -1)": {
     "title": "Ciel dégagé",
-    "description": "Le ciel se dégage juste assez pour que vous puissiez admirez votre environnement."
+    "description": "Le ciel se dégage juste assez pour que vous puissiez admirez votre environnement.",
+    "small_image_coords": [132, 95]
   },
   "(2, 1)": {
     "title": "Ciel dégagé",
-    "description": "Le ciel se dégage juste assez pour que vous puissiez admirez votre environnement."
+    "description": "Le ciel se dégage juste assez pour que vous puissiez admirez votre environnement.",
+    "small_image_coords": [267, 95]
   },
   "(0, -2)": {
     "title": "Vent glacial",
@@ -20,52 +23,62 @@
     "earing": "Désavantage, limitée à 30m",
     "ranged_attack": "Désavantage",
     "flame": "Eteintes",
-    "flight": "Impossible"
+    "flight": "Impossible",
+    "small_image_coords": [65, 130]
   },
   "(1, 0)": {
     "title": "Ciel dégagé",
-    "description": "Le ciel se dégage juste assez pour que vous puissiez admirez votre environnement."
+    "description": "Le ciel se dégage juste assez pour que vous puissiez admirez votre environnement.",
+    "small_image_coords": [200, 130]
   },
   "(2, 2)": {
     "title": "Brume épaisse",
     "description": "Un brouillard froid et humide, un brouillard épais et dense tombe soudainement sur vous. Vous avez du mal à vous orienter et la plus grande des peines à même distinguer ce qui se trouve devant vous.",
     "duration": "2d6",
-    "sight": "Désavantage, limitée à 9m"
+    "sight": "Désavantage, limitée à 9m",
+    "small_image_coords": [335, 130]
   },
   "(0, -1)": {
     "title": "Légers flocons",
     "description": "Des flocons se mettent à tomber tout autour de vous, ajoutant une dernière couche de neige à des paysages déjà saturé de blancheur. Même si ces petits flocons ne sont pas insupportable, vous sentez le froid s'installer et vous avez du mal à discerner ce qui se trouve à plus de 30m.",
-    "sight": "Limitée à 30m"
+    "sight": "Limitée à 30m",
+    "small_image_coords": [132, 170]
   },
   "(1, 1)": {
     "title": "Légers flocons",
     "description": "Des flocons se mettent à tomber tout autour de vous, ajoutant une dernière couche de neige à des paysages déjà saturé de blancheur. Même si ces petits flocons ne sont pas insupportable, vous sentez le froid s'installer et vous avez du mal à discerner ce qui se trouve à plus de 30m.",
-    "sight": "Limitée à 30m"
+    "sight": "Limitée à 30m",
+    "small_image_coords": [267, 170]
   },
   "(-1, -2)": {
     "title": "Légers flocons",
     "description": "Des flocons se mettent à tomber tout autour de vous, ajoutant une dernière couche de neige à des paysages déjà saturé de blancheur. Même si ces petits flocons ne sont pas insupportable, vous sentez le froid s'installer et vous avez du mal à discerner ce qui se trouve à plus de 30m.",
-    "sight": "Limitée à 30m"
+    "sight": "Limitée à 30m",
+    "small_image_coords": [65, 210]
   },
   "(0, 0)": {
     "title": "Chute de neige",
     "description": "D'épais flocons tombent maintenant du ciel, ils virevoltent nonchalament et bloque votre vue. Le froid se fait plus invasif, vous reserrez écharpes et bonnets en vous frotant les extremités. ",
-    "sight": "Désavantage, limitée à 18m"
+    "sight": "Désavantage, limitée à 18m",
+    "small_image_coords": [200, 210]
   },
   "(1, 2)": {
     "title": "Légers flocons",
     "description": "Des flocons se mettent à tomber tout autour de vous, ajoutant une dernière couche de neige à des paysages déjà saturé de blancheur. Même si ces petits flocons ne sont pas insupportable, vous sentez le froid s'installer et vous avez du mal à discerner ce qui se trouve à plus de 30m.",
-    "sight": "Limitée à 30m"
+    "sight": "Limitée à 30m",
+    "small_image_coords": [335, 210]
   },
   "(-1, -1)": {
     "title": "Chute de neige",
     "description": "D'épais flocons tombent maintenant du ciel, ils virevoltent nonchalament et bloque votre vue. Le froid se fait plus invasif, vous reserrez écharpes et bonnets en vous frotant les extremités. ",
-    "sight": "Désavantage, limitée à 18m"
+    "sight": "Désavantage, limitée à 18m",
+    "small_image_coords": [132, 250]
   },
   "(0, 1)": {
     "title": "Chute de neige",
     "description": "D'épais flocons tombent maintenant du ciel, ils virevoltent nonchalament et bloque votre vue. Le froid se fait plus invasif, vous reserrez écharpes et bonnets en vous frotant les extremités. ",
-    "sight": "Désavantage, limitée à 18m"
+    "sight": "Désavantage, limitée à 18m",
+    "small_image_coords": [267, 250]
   },
   "(-2, -2)": {
     "title": "Blizzard",
@@ -76,7 +89,8 @@
     "ranged_attack": "Désavantage",
     "flame": "Eteintes",
     "flight": "Impossible",
-    "dc_concentration": "DC Concentration par round"
+    "dc_concentration": "DC Concentration par round",
+    "small_image_coords": [65, 285]
   },
   "(-1, 0)": {
     "title": "Averse givrante",
@@ -84,7 +98,8 @@
     "duration": "1d4 heures",
     "flame": "Eteintes",
     "dc_concentration": "DC con 14 ou Epuis.",
-    "tiredness": "+1 par heure si DC raté"
+    "tiredness": "+1 par heure si DC raté",
+    "small_image_coords": [200, 285]
   },
   "(0, 2)": {
     "title": "Blizzard",
@@ -95,17 +110,20 @@
     "ranged_attack": "Désavantage",
     "flame": "Eteintes",
     "flight": "Impossible",
-    "dc_concentration": "DC Concentration par round"
+    "dc_concentration": "DC Concentration par round",
+    "small_image_coords": [335, 285]
   },
   "(-2, -1)": {
     "title": "Chute de neige",
     "description": "D'épais flocons tombent maintenant du ciel, ils virevoltent nonchalament et bloque votre vue. Le froid se fait plus invasif, vous reserrez écharpes et bonnets en vous frotant les extremités. ",
-    "sight": "Désavantage, limitée à 18m"
+    "sight": "Désavantage, limitée à 18m",
+    "small_image_coords": [132, 325]
   },
   "(-1, 1)": {
     "title": "Chute de neige",
     "description": "D'épais flocons tombent maintenant du ciel, ils virevoltent nonchalament et bloque votre vue. Le froid se fait plus invasif, vous reserrez écharpes et bonnets en vous frotant les extremités. ",
-    "sight": "Désavantage, limitée à 18m"
+    "sight": "Désavantage, limitée à 18m",
+    "small_image_coords": [267, 325]
   },
   "(-2, 0)": {
     "title": "Blizzard",
@@ -116,6 +134,7 @@
     "ranged_attack": "Désavantage",
     "flame": "Eteintes",
     "flight": "Impossible",
-    "dc_concentration": "DC Concentration par round"
+    "dc_concentration": "DC Concentration par round",
+    "small_image_coords": [200, 360]
   }
 }
