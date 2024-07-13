@@ -159,6 +159,11 @@ class HexGrid:
         self.current_position = self.move(self.current_position, direction_name)
         return self.current_position
 
+    def forced_position(self, coordinates):
+        self.hex_memory.add_position(self.current_position)
+        self.current_position = coordinates
+        return self.current_position
+
     def move_previous_position(self):
         previous_position = self.hex_memory.get_previous_position()
         if previous_position:

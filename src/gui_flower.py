@@ -168,7 +168,7 @@ class GUI:
         selected_value = self.combo.get()
         if selected_value:
             selected_position = ast.literal_eval(selected_value)
-            self.hex_grid.current_position = selected_position
+            self.hex_grid.forced_position(selected_position)
             self.update_position_label("")
 
     def back_action(self):
