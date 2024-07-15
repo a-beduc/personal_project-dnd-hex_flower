@@ -224,7 +224,7 @@ def random_move():
 def main():
     print("*****-- TEST DE METEO --******")
     print(random_move())
-    new_hex_grid = HexGrid(init_file="weather_flower.json")
+    new_hex_grid = HexGrid(init_file="../data/weather_flower.json")
     print(f"Current position : {new_hex_grid.current_position}\n")
     question = ""
     while question not in ("N", "n"):

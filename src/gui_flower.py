@@ -2,7 +2,7 @@ import ast
 import tkinter as tk
 from tkinter import ttk
 from PIL import ImageTk, Image
-from class_hex_flower import HexGrid, random_move
+from src.class_hex_flower import HexGrid, random_move
 
 
 class GUI:
@@ -17,7 +17,7 @@ class GUI:
         self.frame.pack(fill="both", expand=True, padx=10, pady=10)
         self.configure_grid(self.frame)
 
-        self.hex_grid = HexGrid(init_file="weather_flower.json")
+        self.hex_grid = HexGrid(init_file="data/weather_flower.json")
 
         self.img_tk = None
         self.title = None
@@ -52,12 +52,12 @@ class GUI:
         self.canvas = tk.Canvas(img_bloc, width=400, height=400)
         self.canvas.pack()
 
-        base_img = Image.open("Fleur_Climat_cleaned-coord.png")
+        base_img = Image.open("data/Fleur_Climat_cleaned-coord.png")
         base_img.thumbnail((400, 400), Image.Resampling.LANCZOS)
         self.base_img_tk = ImageTk.PhotoImage(base_img)
         self.canvas.create_image(0, 0, anchor=tk.NW, image=self.base_img_tk)
 
-        dot = Image.open("dot.png")
+        dot = Image.open("data/dot.png")
         dot.thumbnail((8, 8), Image.Resampling.LANCZOS)
         self.dot_tk = ImageTk.PhotoImage(dot)
         self.dot_id = self.canvas.create_image(200, 130, anchor=tk.CENTER, image=self.dot_tk)
@@ -180,6 +180,10 @@ class GUI:
         self.hex_grid.move_current_position(direction)
         self.update_position_label(direction)
 
+def start_gui():
+    root = tk.Tk()
+    GUI(root)
+    root.mainloop()
 
 
 
