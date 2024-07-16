@@ -50,4 +50,3 @@ Make sure you have the following installed on your system:
     ```bash
     python main.py
     ```
-4. Follow the instruction that appear ont the terminal by answering Y (yes) or N (no).
